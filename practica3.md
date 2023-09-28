@@ -37,3 +37,5 @@ students: r
 Verificacion: Crear subcarpeta matematicas en eso1, y crear ficheros que tendran los mismos permisos, y comprobar luego que un alumno de eso1 pueda acceder.
 
 Instalar el tree y ver de donde partimos y como acaba en el formato arbol.
+
+Hacerlo en /home/opt
