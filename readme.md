@@ -6,9 +6,9 @@
 
 *[Practica3.ACL](./practica3.md)
 
-*[Practica4.Logs](./practica4.md)
+*[Practica4.RAID 10](./practica4.md)
 
-*[Practica5.Logs](./practica5.md)
+*[Practica5.](./practica5.md)
 
 
 
