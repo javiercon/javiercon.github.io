@@ -1,41 +1,69 @@
-Crear un grupo 'addgroup teachers'
-adduser teacher1
-adduser teacher2
-y asignarlos al grupo teachers
+# INTRODUCCIÓN
+El trabajo de un administrador de sistemas, también tiene como obligación mantener los archivos con la integridad y autenticación necesaria para poder llevar un sistema seguro, en esta práctica se editarán las listas ACL(Acces Control List).
 
-sudo useradd student1 -G students, para añadir el usuario al grupo
+# DESARROLLO
+Tenemos que crear cuatro carpetas:
+- eso1
+- eso2
+- Teachers
+- Students
 
-profesor teacher1 tenga permisos rw
-teacher2 r
-students r
-teachers r
-esto se hace con setfacl -m u:teacher1:rw prueba.txt,
-Si quiero que futuros permisos tengan esos mismos permisos setfacl -Rdm -m u:teacher1:rw,u:teacher2:r,g:students:r,g:teachers:r p1
+Deberemos crear los grupos:
+- Students
+- Teachers
+- eso1
+- eso2
+
+Debemos crear los usuarios:
+- student1
+- student2
+- teacher1
+- teacher2
+
+Las condiciones son:
+- Carpeta eso1 (teachers:rwx eso1:rx)
+
+- Carpeta eso2 (teachers:rw eso2:rx)
+
+- Carpeta teachers (teachers:r teacher1:rwx)
+
+- Carpeta students (teachers:rwx students: rx)
+
+**EMPEZAMOS**
+---
+Creamos los usuarios como por ejemplo:
+
+```sudo adduser teacher1```
+
+Creamos los grupos:
+
+```sudo addgroup teachers```
+
+Añadimos el usuario al grupo:
+
+```sudo adduser teacher1 teachers```
+
+Ahora modificaremos los permisos de los usuarios y de los grupos:
+
+```setfacl -Rb * ```
+
+Usamos este comando para eliminar todos los controles de acceso (ACLs) extendidos en un sistema de archivos de manera recursiva.
+
+```setfacl -Rdm g:Teachers:rwX,g:eso1:rX eso1```
+
+```setfacl -Rdm g:Teachers:rwX,g:eso2:rX eso2```
+
+```setfacl -Rdm u:teacher1:rw,g:Teachers:r Teachers```
+
+```setfacl -Rdm g:Teachers:rwX,g:students:rX Students```
 
 
-crear grupo students
+# VERIFICACIÓN
 
+- teacher2 no tiene permisos para escribir en Teachers
 
-
-Carpeta eso1
-teachers:rw
-eso1:r
-
-Carpeta eso2
-teachers:rw
-eso2:r
-
-Carpeta teachers
-teachers:r
-teacher1:rw
-
-Carpeta students
-teachers:rw
-students: r
-
-
-Verificacion: Crear subcarpeta matematicas en eso1, y crear ficheros que tendran los mismos permisos, y comprobar luego que un alumno de eso1 pueda acceder.
-
-Instalar el tree y ver de donde partimos y como acaba en el formato arbol.
-
-Hacerlo en /home/opt
+```bash 
+$ su teacher2
+$ cd /prueba/Teachers/
+teacher2@javier-virtualbox:/prueba/Teachers$ touch p1.txt
+touch: no se puede efectuar `touch' sobre 'p1.txt': Permiso denegado```
