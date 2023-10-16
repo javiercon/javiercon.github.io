@@ -27,3 +27,5 @@ y creamos un 2 lvm que ocupará un 60% y 40%
 Crear contenido en el raid que ocupe un 50%, y eliminamos disco. Y con el reemplazo sincronizarlo.
 
 Instalar GUI para un uso más amigable, y vemos que funciona.
+
+Hacer un checksum para comprobarlo.
