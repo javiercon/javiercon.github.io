@@ -1,0 +1,1 @@
+Internet no es un canal seguro. Cualquier persona podría obtener nuestros datos. Para evitar que esto suceda, ciertas comunicaciones han de ser cifradas. En esta práctica generaremos un certificado autofirmado.
