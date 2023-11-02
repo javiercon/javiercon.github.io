@@ -4,3 +4,12 @@ Generar certificado
 Autofirma
 Instalación Apache
 Comprobación
+
+
+Paso 1
+Crear CA [tutorial digital ocean]
+Crear CSR
+Firmarlo por CA
+Configurar sitio apache
+  default-ssl con certificación
+Probar
