@@ -112,6 +112,41 @@ root@javier-VirtualBox:~# pvcreate /dev/md2
 root@javier-VirtualBox:~# vgcreate Volumen /dev/md2
   Volume group "Volumen" successfully created
 ```
+- Creamos 2 LVM que ocuparán un 60% y 40%.
+```
+root@javier-VirtualBox:~# lvcreate -l 60%FREE -n A1 Volumen
+  Logical volume "A1" created.
+root@javier-VirtualBox:~# lvcreate -l 40%FREE -n A2 Volumen
+  Logical volume "A2" created.
+  ```
+
+- Formateamos los LVM
+```
+root@javier-VirtualBox:~# mkfs.ext4 /dev/Volumen/A1
+mke2fs 1.46.5 (30-Dec-2021)
+Se está creando un sistema de ficheros con 626688 bloques de 4k y 156800 nodos-i
+UUID del sistema de ficheros: 818e63bf-645a-4142-a00f-4948c19b2aab
+Respaldos del superbloque guardados en los bloques: 
+	32768, 98304, 163840, 229376, 294912
+
+Reservando las tablas de grupo: hecho                            
+Escribiendo las tablas de nodos-i: hecho                            
+Creando el fichero de transacciones (16384 bloques): hecho
+Escribiendo superbloques y la información contable del sistema de archivos:  0/2hecho
+
+root@javier-VirtualBox:~# mkfs.ext4 /dev/Volumen/A2
+mke2fs 1.46.5 (30-Dec-2021)
+Se está creando un sistema de ficheros con 166912 bloques de 4k y 41760 nodos-i
+UUID del sistema de ficheros: df8c3e17-d0d4-46f4-a616-120577116d7a
+Respaldos del superbloque guardados en los bloques: 
+	32768, 98304, 163840
+
+Reservando las tablas de grupo: hecho                            
+Escribiendo las tablas de nodos-i: hecho                            
+Creando el fichero de transacciones (4096 bloques): hecho
+Escribiendo superbloques y la información contable del sistema de archivos: hecho
+```
+
 
 
 
