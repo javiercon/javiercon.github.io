@@ -55,6 +55,64 @@ root@javier-VirtualBox:/home/javier# df -h
 **DISCOS DE REPUESTO**
 ---
 Ahora añadimos 2 discos. Se denominan /dev/sdf y /dev/sdg
+```
+Disco /dev/sdf: 2 GiB, 2147483648 bytes, 4194304 sectores
+Disk model: VBOX HARDDISK   
+Unidades: sectores de 1 * 512 = 512 bytes
+Tamaño de sector (lógico/físico): 512 bytes / 512 bytes
+Tamaño de E/S (mínimo/óptimo): 512 bytes / 512 bytes
+
+
+Disco /dev/sdg: 2 GiB, 2147483648 bytes, 4194304 sectores
+Disk model: VBOX HARDDISK   
+Unidades: sectores de 1 * 512 = 512 bytes
+Tamaño de sector (lógico/físico): 512 bytes / 512 bytes
+Tamaño de E/S (mínimo/óptimo): 512 bytes / 512 bytes
+```
+
+- Ahora creamos un archivo:
+```
+root@javier-VirtualBox:/home/javier# mkdir prueba_raid
+root@javier-VirtualBox:/home/javier# cd prueba_raid/
+root@javier-VirtualBox:/home/javier/prueba_raid# sudo dd if=/dev/zero of=prueba bs=1M count=250
+250+0 registros leídos
+250+0 registros escritos
+262144000 bytes (262 MB, 250 MiB) copied, 0,67241 s, 390 MB/s
+root@javier-VirtualBox:/home/javier/prueba_raid# md5sum prueba > checksum.txt
+```
+
+- Ahora simulamos el fallo de uno de los dos discos de cada RAID, y añadimos los 2 discos de repuesto.
+```
+root@javier-VirtualBox:/home/javier/prueba_raid# mdadm /dev/md0 --fail /dev/sdb --remove /dev/sdb
+mdadm: set /dev/sdb faulty in /dev/md0
+mdadm: hot removed /dev/sdb from /dev/md0
+root@javier-VirtualBox:/home/javier/prueba_raid# mdadm /dev/md1 --fail /dev/sdd --remove /dev/sdd
+mdadm: set /dev/sdd faulty in /dev/md1
+mdadm: hot removed /dev/sdd from /dev/md1
+```
+```
+root@javier-VirtualBox:/home/javier/prueba_raid# mdadm --manage /dev/md0 --add /dev/sdf
+mdadm: added /dev/sdf
+root@javier-VirtualBox:/home/javier/prueba_raid# mdadm --manage /dev/md1 --add /dev/sdg
+mdadm: added /dev/sdg
+```
+- Ahora volvemos a redirigirlo, y comprabaremos que todo funciona bien.
+```
+root@javier-VirtualBox:/home/javier/prueba_raid# md5sum prueba > checksum.txt
+root@javier-VirtualBox:/home/javier/prueba_raid# md5sum -c checksum.txt 
+prueba: La suma coincide
+```
+
+**LVM**
+---
+
+- Nuestro RAID 10 lo convertimos en Volúmen Físico y creamos un grupo de volúmen.
+```
+root@javier-VirtualBox:~# pvcreate /dev/md2
+root@javier-VirtualBox:~# vgcreate Volumen /dev/md2
+  Volume group "Volumen" successfully created
+```
+
 
 
 
