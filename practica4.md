@@ -162,24 +162,3 @@ Escribiendo superbloques y la información contable del sistema de archivos: hec
 
 
 
-DESARROLLO 
-
-6 HDD
-
-Montamos el raid 1, verificamos que está correcto
- Creación
- Comprobación
-
-RAID 10
- Crear
- comprobar
-
-LVM para una mejor gestión. Haremos 2 LVM (volumen logico)
-Lo creamos, y ocupará un 95%
-y creamos un 2 lvm que ocupará un 60% y 40%
-
-Crear contenido en el raid que ocupe un 50%, y eliminamos disco. Y con el reemplazo sincronizarlo.
-
-Instalar GUI para un uso más amigable, y vemos que funciona.
-
-Hacer un checksum para comprobarlo.
