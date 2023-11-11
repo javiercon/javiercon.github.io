@@ -192,7 +192,7 @@ Data Base Updated
 Certificate created at: /home/javier/easy-rsa/pki/issued/javier-server.crt
 ```
 
-**CONFIGURACIÓN APACHE**
+**Configuración Apache**
 - Vamos a copiar el certificado firmado y la llave de petición.
 ```
 javier@javier-VirtualBox:~/easy-rsa/pki/issued$ sudo cp javier-server.crt /etc/ssl/certs
