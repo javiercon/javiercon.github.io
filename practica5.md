@@ -48,6 +48,7 @@ set_var EASYRSA_DIGEST         "sha512"
 Ahora ya podremos crear la CA.
 
 - Vamos a crear el certificado root público y el par de claves privadas para su entidad certificadora.
+
 ```
 javier@javier-VirtualBox:~/easy-rsa$ ./easyrsa build-ca
 Using SSL: openssl OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
