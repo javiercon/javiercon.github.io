@@ -122,6 +122,7 @@ root@javier-VirtualBox:~# lvcreate -l 40%FREE -n A2 Volumen
   ```
 
 - Formateamos los LVM
+
 ```
 root@javier-VirtualBox:~# mkfs.ext4 /dev/Volumen/A1
 mke2fs 1.46.5 (30-Dec-2021)
