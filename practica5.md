@@ -31,6 +31,7 @@ Your newly created PKI dir is: /home/javier/easy-rsa/pki
 ```
 
 - Ahora vamos a modificar el archivo vars con los valores nuestros personales, y así podremos crear la clave privada y el certificado de su CA.
+
 ```
 javier@javier-VirtualBox:~/easy-rsa$ nano vars
 javier@javier-VirtualBox:~/easy-rsa$ cat vars
