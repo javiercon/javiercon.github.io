@@ -20,6 +20,7 @@ root@javier-VirtualBox:/home/javier# apt install mdadm
 ```
 
 - Ahora creamos 2 raid 1, y luego creamos el raid 0:
+
 ```
 root@javier-VirtualBox:/home/javier# mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
 
