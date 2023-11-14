@@ -114,6 +114,7 @@ javier@javier-VirtualBox:~/practice-csr$ openssl genrsa -out javier-server.key
 ```
 
 - Ahora haremos la petición.
+
 ```
 javier@javier-VirtualBox:~/practice-csr$ openssl req -new -key javier-server.key -out javier-server.req
 You are about to be asked to enter information that will be incorporated
@@ -150,6 +151,7 @@ You may now use this name to perform signing operations on this request.
 ```
 
 - Firmamos la solicitud.
+
 ```
 javier@javier-VirtualBox:~/easy-rsa$ ./easyrsa sign-req server javier-server
 Using SSL: openssl OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
@@ -197,6 +199,7 @@ Certificate created at: /home/javier/easy-rsa/pki/issued/javier-server.crt
 
 **Configuración Apache**
 - Vamos a copiar el certificado firmado y la llave de petición.
+
 ```
 javier@javier-VirtualBox:~/easy-rsa/pki/issued$ sudo cp javier-server.crt /etc/ssl/certs
 
@@ -204,6 +207,7 @@ javier@javier-VirtualBox:~/practice-csr$ sudo cp javier-server.key /etc/ssl/priv
 ```
 
 - Vamos a modificar en este archivo estas 2 líneas. Quedarán así.
+
 ```
 javier@javier-VirtualBox:~$ sudo nano /etc/apache2/sites-available/default-ssl.conf 
 javier@javier-VirtualBox:~$ cat /etc/apache2/sites-available/default-ssl.conf | grep SSLCertificate 
