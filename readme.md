@@ -10,5 +10,8 @@
 
 *[Practica5.Certificado Autofirmado](./practica5.md)
 
+*[Practica6.Hardening](./practica6.md)
+
+
 
 
