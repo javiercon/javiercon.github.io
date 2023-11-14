@@ -140,6 +140,7 @@ An optional company name []:1234
 ```
 
 - Copiaremos el archivo .req e importaremos la solicitud de certificado con easy-rsa.
+
 ```
 javier@javier-VirtualBox:~/practice-csr$ cp javier-server.req /tmp/javier-server.req
 javier@javier-VirtualBox:~/practice-csr$ cd ~/easy-rsa/
