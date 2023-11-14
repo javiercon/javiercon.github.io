@@ -21,7 +21,7 @@ javier@javier-VirtualBox:~$ chmod 700 /home/javier/easy-rsa
 ```
 
 - E iniciamos la clave pública.
-- 
+
 ```
 javier@javier-VirtualBox:~$ cd ~/easy-rsa
 javier@javier-VirtualBox:~/easy-rsa$ ./easyrsa init-pki
