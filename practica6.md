@@ -41,6 +41,7 @@ SSLCertificateFile /etc/ssl/certs/javier-server.crt
 SSLCertificateKeyFile /etc/ssl/private/javier-server.key
 ```
 - Y activar y reiniciar.
+  
 ```
 sudo a2ensite default-ssl
 
