@@ -94,9 +94,11 @@ documentación del proyecto en formato markdown.
 - Servidor Radius: Autenticación de peticiones de clientes inalámbricos provenientes
 del punto de acceso.
 
+
 **Estructura de Red Propuesta**
 
 ![imagen](grafica.png)
+
 En resumen, afrontamos el desafío de crear una infraestructura que garantice la seguridad,
 la eficiencia operativa y el cumplimiento de requisitos específicos. El trabajo en equipo, la
 planificación detallada y la aplicación práctica de los conceptos aprendidos serán
