@@ -1,6 +1,6 @@
 # IMPLEMENTACIÓN DE UNA RED EMPRESARIAL
 
-![imagen](https://www.issa.int/sites/default/files/styles/featured_screen_mobile/public/images/guideline/HRM-sml.jpg?h=77c67179&itok=VIlZdgT8)
+![imagen](portada.png)
 
 Gheorghe Covaci Coldar, Santiago E. Carpente Burguete, Javier Contell Adell
 
