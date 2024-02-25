@@ -262,7 +262,7 @@ sudo nano /etc/squid/squid.conf
 A continuación, añadimos o modificamos las siguientes líneas para habilitar la autenticación
 LDAP y restringir el acceso a ciertos grupos de páginas:
 ```bash
-auth_param basic program /usr/lib/squid/ basic_ldap_auth -b “ou=unidad,dc=grupo1,dc=com" -f "uid=%s" -h 172.16.2.15
+auth_param basic program /usr/lib/squid/ basic_ldap_auth -b "ou=unidad,dc=grupo1,dc=com" -f "uid=%s" -h 172.16.2.15
 auth_param basic children 5 startup=5 idle=1
 auth_param basic credentialsttl 2 hours
 
