@@ -216,11 +216,9 @@ como puerta de entrada.
 ```bash
 Acceso Externo solo al Servidor Web:
 
-sudo iptables -A FORWARD -i enp0s3 -o enp0s8 -p tcp -m multiport
---dports 80,443 -j ACCEPT
+sudo iptables -A FORWARD -i enp0s3 -o enp0s8 -p tcp -m multiport --dports 80,443 -j ACCEPT
 
-sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp -m multiport
---dports 80,443 -j DNAT --to-destination 172.16.1.10
+sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp -m multiport --dports 80,443 -j DNAT --to-destination 172.16.1.10
 ```
 Estas reglas permiten el acceso desde el exterior solo al servidor web y realizan la
 traducción de dirección de red (DNAT) para redirigir el tráfico al servidor web interno.
@@ -265,19 +263,15 @@ A continuación, añadimos o modificamos las siguientes líneas para habilitar l
 LDAP y restringir el acceso a ciertos grupos de páginas:
 ```bash
 auth_param basic program /usr/lib/squid/ basic_ldap_auth -b “ou=unidad,dc=grupo1,dc=com" -f "uid=%s" -h 172.16.2.15
-auth_param basic children 5 startup=5 idle=1 auth_param basic credentialsttl 2 hours
+auth_param basic children 5 startup=5 idle=1
+auth_param basic credentialsttl 2 hours
 
 acl ldap_users proxy_auth REQUIRED
-
 acl social dstdomain .instagram.com .x.com .facebook.com
-
 acl juegos dstdomain .minijuegos.com .juegos.com
 
-
 http_access deny social
-
 http_access deny juegos
-
 http_access allow all
 ```
 Estas líneas permitirán la autenticación en la red a través de las credenciales almacenadas
@@ -321,8 +315,7 @@ detallados:
     través de RADIUS.
 
 - **Añadir Configuración RADIUS:**
-    - Añade la dirección IP del servidor RADIUS: 172.16.2.15, puerto de RADIUS:
-1812.
+    - Añade la dirección IP del servidor RADIUS: 172.16.2.15, puerto de RADIUS: 1812.
 - **Guardar Configuración:**
 
     - Guarda la configuración y espera al reinicio del punto de acceso.
@@ -422,8 +415,7 @@ sudo ldapadd -x -D cn=admin,dc=grupo1,dc=local -W -f usr.ldif
 Se instalan los paquetes necesarios para configurar el entorno del programa, incluyendo
 Apache2, PHP, y otros módulos requeridos.
 ```bash
-sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring
-php-common php-pear -y
+sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear -y
 ```
 Se activa la configuración de php-cgi para asegurar que PHP se integre correctamente con
 Apache.
