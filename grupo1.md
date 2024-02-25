@@ -80,6 +80,7 @@ tras validar usuarios en el servidor LDAP.
 - Seguridad Inalámbrica: Implementación de una subred para clientes WIFI
 autorizados mediante RADIUS/LDAP.
 
+---
 **Servidores y Herramientas Utilizadas**
 
 - Servidor LDAP: Utilización de un servidor LDAP para la gestión de usuarios en el
@@ -94,7 +95,7 @@ documentación del proyecto en formato markdown.
 - Servidor Radius: Autenticación de peticiones de clientes inalámbricos provenientes
 del punto de acceso.
 
-
+---
 **Estructura de Red Propuesta**
 
 ![imagen](grafica.png)
@@ -113,6 +114,7 @@ Instala una distribución de Linux en el servidor. Puedes optar por una distribu
 Ubuntu Server o CentOS, que son opciones comunes y ampliamente soportadas. En este
 caso usaremos ubuntu server.
 
+---
 **2. Configuración de Interfaces de Red**
 
 Configura las interfaces de red para reflejar la topología de tu red empresarial. Abre el
@@ -141,7 +143,7 @@ network:
             - 172.16.2.1/24
 version: 2
 ```
-
+---
 **3. Preparación del Firewall**
 
 Con el servidor configurado con las direcciones IP correspondientes, procedemos a la
@@ -175,6 +177,7 @@ Con estas configuraciones, estamos listos para introducir las reglas específica
 que controlarán el tráfico en nuestra red. Este paso permitirá garantizar la seguridad y
 eficiencia de la arquitectura de red empresarial que estamos implementando.
 
+---
 **4. Creación de Reglas**
 
 Ahora procedemos a establecer las reglas del firewall, siguiendo las directrices específicas
@@ -236,6 +239,7 @@ Con estas reglas, se ha configurado el firewall según las especificaciones del 
 Asegúrate de realizar pruebas exhaustivas para verificar que el firewall funcione
 correctamente y cumpla con los requisitos establecidos.
 
+---
 **5. Instalación de SQUID Proxy**
 
 La instalación y configuración de nuestro proxy SQUID es un proceso breve y sencillo. A
@@ -366,7 +370,7 @@ Para verificar la configuración, podemos ejecutar el siguiente comando:
 ```bash
 sudo slapcat
 ```
-
+---
 **2. Creación de la estructura del directorio de LDAP**
 
 Iniciaremos la estructura del directorio creando el archivo ou.ldif con el siguiente contenido:
@@ -411,6 +415,8 @@ sn: asir
 ```bash
 sudo ldapadd -x -D cn=admin,dc=grupo1,dc=local -W -f usr.ldif
 ```
+
+---
 **3. Instalación y configuración de LAM**
 
 Se instalan los paquetes necesarios para configurar el entorno del programa, incluyendo
@@ -448,7 +454,7 @@ Require ip 127.0.0.1 172.16.2.15/24
 ```bash
 sudo systemctl restart apache2
 ```
-
+---
 **Configuración Inicial de LAM:**
 
 Accederemos a la interfaz web de LAM en el navegador: http://172.16.2.15/lam
@@ -489,6 +495,7 @@ sudo apt install apache2
 Una vez instalado, podemos verificar su funcionamiento abriendo el navegador y visitando
 nuestra dirección IP para visualizar el archivo predeterminado index.html de Apache.
 
+---
 **2. Generación de la clave SSL**
 
 Ahora, crearemos una clave SSL para habilitar el protocolo HTTPS. Ejecutaremos el
@@ -503,6 +510,7 @@ Habilitaremos el módulo SSL.
 sudo a2enmod ssl
 ```
 
+---
 **3. Configuración del Virtual Host**
 
 Vamos a crear un dominio en el directorio /var/www/ y no el predeterminado que es
